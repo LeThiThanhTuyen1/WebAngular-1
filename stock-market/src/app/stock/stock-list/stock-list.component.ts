@@ -39,4 +39,33 @@ export class StockListComponent implements OnInit{
           console.log('Response Type "blob" RESPONSE is', response);
       });
   }
+
+  // updateStock(stockId: number, updatedStock: any): void {
+  //   this.HttpServerService.updateStock(stockId, updatedStock)
+  //     .subscribe(
+  //       response => {
+  //         // Xử lý kết quả sau khi cập nhật thành công
+  //         console.log('Cập nhật cổ phiếu thành công:', response);
+  //       },
+  //       error => {
+  //         // Xử lý lỗi nếu có
+  //         console.error('Lỗi khi cập nhật cổ phiếu:', error);
+  //       }
+  //     );
+  // }
+
+  // // Phương thức để xóa một cổ phiếu
+  // deleteStock(stockId: number): void {
+  //   this.httpServerService.deleteStock(stockId)
+  //     .subscribe(
+  //       response => {
+  //         // Xử lý kết quả sau khi xóa thành công
+  //         console.log('Xóa cổ phiếu thành công:', response);
+  //       },
+  //       error => {
+  //         // Xử lý lỗi nếu có
+  //         console.error('Lỗi khi xóa cổ phiếu:', error);
+  //       }
+  //     );
+  // }
 }

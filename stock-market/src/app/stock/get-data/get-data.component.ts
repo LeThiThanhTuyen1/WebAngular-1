@@ -11,7 +11,7 @@ export class GetDataComponent implements OnInit{
   constructor(private httpServerService: HttpServerService) {}
 
   ngOnInit(): void {
-      this.httpServerService.getstocks().subscribe((data) => {
+      this.httpServerService.getStocks().subscribe((data) => {
         console.log('stocks', data);
       })
   }

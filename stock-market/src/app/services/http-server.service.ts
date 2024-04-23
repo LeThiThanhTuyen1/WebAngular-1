@@ -15,7 +15,8 @@ export class HttpServerService {
   };
 
   constructor(private httpClient: HttpClient) { }
-  public getstocks(): Observable<any>{
+
+  public getStocks(): Observable<any>{
     const url=`${this.REST_API_SERVICE}/stocks`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
@@ -25,5 +26,15 @@ export class HttpServerService {
     console.log('postStock=', url);
     console.log('postStock: body', body);
     return this.httpClient.post<any>(url, body, this.httpOptions);
+  }
+
+  public updateStock(stockId: number, body: any): Observable<any>{
+    const url=`${this.REST_API_SERVICE}/stocks/${stockId}`;
+    return this.httpClient.put<any>(url, body, this.httpOptions);
+  }
+
+  public deleteStock(stockId: number): Observable<any>{
+    const url=`${this.REST_API_SERVICE}/stocks/${stockId}`;
+    return this.httpClient.delete<any>(url, this.httpOptions);
   }
 }
