@@ -1,32 +1,17 @@
-<!-- <h1>Stock Market App!</h1>
-<div class="stock-container">
-    <div class="name">{{stock.name + ' (' + stock.code + ')'}}</div>
-    <div class="exchange">{{stock.exchange}}</div>
-    <div class="price"[class]="stock.isPositiveChange() ? 'positive' : 'negative'">
-        $ {{stock.price}}
-    </div>
-    <button (click)="toggleFavorite($event)"
-            [disabled]="stock.favorite">Add to Favorite</button>
 
-</div> -->
 <div class="stock-container">
     <div class="name">{{stock.name + ' (' + stock.code + ')'}}</div>
     <div class="exchange">{{stock.exchange}}</div>
-<<<<<<< Updated upstream
-    <div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">
+    <div class="price"
+        [class.positive]="stock.price > stock.previousPrice"
+        [class.negative]="stock.price <= stock.previousPrice">
         $ {{stock.price}}
     </div>
-    
-=======
-    <!-- <div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">
-        $ {{stock.price}}
-    </div> -->
     <div class="price" 
         [class.positive]="stock.price > stock.previousPrice"
         [class.negative]="stock.price <= stock.previousPrice">
         $ {{stock.price}}
     </div>
->>>>>>> Stashed changes
     <button (click)="onToggleFavorite($event)"
             *ngIf="!stock.favorite">Add to Favorite</button>
     <button (click)="onToggleFavorite($event)"

@@ -1,31 +1,20 @@
-<<<<<<< Updated upstream
 .stock-container {
-=======
-/* .stock-container {
->>>>>>> Stashed changes
     border: 1px solid black;
     border-radius: 5px;
     display: inline-block;
     padding: 10px;
     text-align: center;
     margin: 0 10px 10px 0;
-<<<<<<< Updated upstream
-}
-=======
-} */
->>>>>>> Stashed changes
+} 
 .positive{
     color: green;
 }
 .negative{
     color: red;
-<<<<<<< Updated upstream
-=======
 }
-.tock-container {
+/* .stock-container {
     display: inline-block;
     padding: 10px;
     text-align: center;
     margin: 0 10px 10px 0;
->>>>>>> Stashed changes
-}
+} */
