@@ -1,11 +1,8 @@
 .item-stock {
     display: inline-block;
     margin: 10px;
-<<<<<<< Updated upstream
-=======
     border: 1px solid black;
     padding: 10px;
->>>>>>> Stashed changes
 }
 button {
     margin-left: 5px;
