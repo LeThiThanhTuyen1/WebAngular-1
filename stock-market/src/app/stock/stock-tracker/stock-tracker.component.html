@@ -1,0 +1,31 @@
+<div class="title">
+    <p>Stock Tracker</p>
+</div>
+<div *ngFor="let stock of stocks" class="stock-container" [ngClass]="{'green': stock.ratioChange > 0, 'red': stock.ratioChange < 0}">
+    <div >
+        <div class="code">{{stock.code}}</div>
+        <div class="price">${{stock.price}}</div>
+        <div class="ratio">${{stock.ratioChange + ' (' + stock.ratio + '%)' }}</div>
+    </div>
+    <button [disabled]="stock.favorite" (click)="addToFavorite(stock)">Add to Favorite</button>
+</div>
+
+<div class="favorite-title">
+    <div class="home">Stock Tracker</div>
+    <!-- <div class="menu">
+        <ul>
+            <li>Dashboard</li>
+            <li>Manage</li>
+        </ul>
+    </div>     -->
+    
+</div>
+<div class="favorite-box" *ngIf="favoriteStocks.length > 0">
+    <p>Add Stock</p>
+    <div class="favorite-list" *ngFor="let stock of favoriteStocks">
+        <div class="favorite-item">
+                <span class="left">{{stock.code}}</span>
+                <button class="right" (click)="removeFromFavorite(stock)"><strong>REMOVE</strong></button>
+        </div>
+    </div>
+</div>

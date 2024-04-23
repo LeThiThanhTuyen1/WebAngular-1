@@ -1,0 +1,36 @@
+/* .stock-name .ng-valid,
+.stock-code .ng-pristine,
+.stock-price .ng-untouched{
+    background-color: green;
+}
+
+.stock-name .ng-invalid,
+.stock-code .ng-dirty,
+.stock-price .ng-touched{
+    background-color: pink;
+} */
+
+ .stock-name input.ng-valid {
+    background-color: green;
+}
+
+.stock-name input.ng-invalid {
+    background-color: pink;
+}
+
+/* .stock-code input.ng-valid {
+    background-color: green;
+} */
+.stock-code input.ng-pristine {
+    background-color: green;
+}
+.stock-code input.ng-dirty {
+    background-color: pink;
+}
+
+.stock-price input.ng-untouched {
+    background-color: green;
+}
+.stock-price input.ng-touched {
+    background-color: pink;
+}

@@ -1,0 +1,13 @@
+.stock-name input.ng-valid {
+    background-color: green;
+}
+.stock-code input.ng-pristine,
+.stock-price input.ng-untouched{
+    background-color: green;
+}
+
+.stock-name input.ng-invalid,
+.stock-code input.ng-dirty,
+.stock-price input.ng-touched{
+    background-color: pink;
+}
