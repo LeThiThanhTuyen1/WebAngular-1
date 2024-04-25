@@ -1,4 +1,4 @@
-<div class="item-stock" *ngFor="let stock of stocks$ | async">
+<div class="item-stock" *ngFor="let stock of stocks">
     <app-stock-item [stock]="stock"></app-stock-item>
     <!-- <br><button (click)="deleteStock(stock)">Delete</button>
     <button (click)="updateStock(stock)">Update</button>

@@ -10,9 +10,11 @@ import { StockTrackerComponent } from './stock/stock-tracker/stock-tracker.compo
 import { CreatStockNativeComponent } from './stock/creat-stock-native/creat-stock-native.component';
 import { StockListComponent } from './stock/stock-list/stock-list.component';
 import { StockService } from './services/stock.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { GetDataComponent } from './stock/get-data/get-data.component';
 import { PostDataComponent } from './stock/post-data/post-data.component';
+import { MessageService } from './services/message.service';
+import { withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { PostDataComponent } from './stock/post-data/post-data.component';
   ],
   providers: [
     provideClientHydration(),
-    StockService
+    provideHttpClient(withFetch()),
+    StockService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

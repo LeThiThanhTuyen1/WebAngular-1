@@ -13,32 +13,44 @@ import { response } from 'express';
 })
 export class StockListComponent implements OnInit{
 
-  public stocks$: Observable<Stock[]> = of([]);
+  stocks: Stock[] = [];
 
-  constructor(private stockService: StockService) {}
+  constructor(private httpServerService: HttpServerService) {}
 
   ngOnInit(): void {
-    this.stocks$ = this.stockService.getStocks();
-    this.stockService.getStocksAsResponse()
-      .subscribe((response) => {
-          console.log('OBSERVE "response" RESPONSE is', response);
-      });
-    
-    this.stockService.getStocksEvents()
-      .subscribe((response) => {
-          console.log('OBSERVE "events" RESPONSE is', response);
-      }); 
-      
-    this.stockService.getStocksAsString()
-      .subscribe((response) => {
-        console.log('Response Type "text" RESPONSE is', response);
-      });
-    
-    this.stockService.getStocksAsBlob()
-      .subscribe((response) => {
-          console.log('Response Type "blob" RESPONSE is', response);
-      });
+      this.getStocks();
   }
+
+  getStocks(): void {
+    this.httpServerService.getStocks()
+      .subscribe(stocks => this.stocks = this.stocks);
+  }
+  // public stocks$: Observable<Stock[]> = of([]);
+
+  // constructor(private stockService: StockService) {}
+
+  // ngOnInit(): void {
+  //   this.stocks$ = this.stockService.getStocks();
+  //   this.stockService.getStocksAsResponse()
+  //     .subscribe((response) => {
+  //         console.log('OBSERVE "response" RESPONSE is', response);
+  //     });
+    
+  //   this.stockService.getStocksEvents()
+  //     .subscribe((response) => {
+  //         console.log('OBSERVE "events" RESPONSE is', response);
+  //     }); 
+      
+  //   this.stockService.getStocksAsString()
+  //     .subscribe((response) => {
+  //       console.log('Response Type "text" RESPONSE is', response);
+  //     });
+    
+  //   this.stockService.getStocksAsBlob()
+  //     .subscribe((response) => {
+  //         console.log('Response Type "blob" RESPONSE is', response);
+  //     });
+  // }
 
   // updateStock(stockId: number, updatedStock: any): void {
   //   this.HttpServerService.updateStock(stockId, updatedStock)
