@@ -52,6 +52,8 @@ export class StockService {
     return this.http.post('/api/stock', stock);
   }
 
+  
+
   toggleFavorite(stock: Stock): Observable<Stock> {
     return this.http.patch<Stock>('/api/stock' + stock,
       {

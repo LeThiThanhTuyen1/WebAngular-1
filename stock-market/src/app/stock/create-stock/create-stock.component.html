@@ -2,6 +2,17 @@
 
 <div class="form-group">
     <form (ngSubmit)="createStock(stockForm)" #stockForm="ngForm">
+        <div class="stock-id">
+            <input type="number" placeholder="Stock Id" required
+            name="stockId" #stockId="ngModel"
+            [(ngModel)]="stock.id">        
+        </div>
+        <div *ngIf="stockId.dirty && stockId.invalid">
+            <div *ngIf="stockId.errors?.['required']">
+                Stock Id is Mandatory
+            </div>
+        </div>
+
         <div class="stock-name">
             <input type="text" placeholder="Stock Name" required
             name="stockName" #stockName="ngModel"

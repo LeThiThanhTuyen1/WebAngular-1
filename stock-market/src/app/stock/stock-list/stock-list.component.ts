@@ -25,6 +25,13 @@ export class StockListComponent implements OnInit{
     this.httpServerService.getStocks()
       .subscribe(stocks => this.stocks = stocks);
   }
+
+  createStock(stock: Stock): void {
+    this.httpServerService.postStock(stock)
+      .subscribe(newStock => {
+        this.stocks.push(newStock);
+      });
+  }
   // public stocks$: Observable<Stock[]> = of([]);
 
   // constructor(private stockService: StockService) {}

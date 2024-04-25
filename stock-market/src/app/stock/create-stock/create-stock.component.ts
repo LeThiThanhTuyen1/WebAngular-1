@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {Stock} from '../../model/stock';
 import { StockService } from '../../services/stock.service';
 import { MessageService } from '../../services/message.service';
+import { HttpServerService } from '../../services/http-server.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-stock',
@@ -16,12 +18,14 @@ export class CreateStockComponent {
   public message: string = '';
   public exchanges  = ['NYSE', 'NASDAQ', 'OTHER'];
 
-  constructor(private stockService: StockService) {
+  //constructor(private stockService: StockService) {
+    constructor(private httpServerService: HttpServerService, private router: Router) {
     this.initializeStock();
   }
 
   initializeStock() {
     this.stock = {
+      id: 0,
       name: '',
       code: '',
       price: 0,
@@ -35,20 +39,17 @@ export class CreateStockComponent {
   this.stock.price = price;
   this.stock.previousPrice = price;
  }
- 
-  createStock(stockForm: any) {
-    if(stockForm.valid) {
-      this.stockService.createStock(this.stock)
-        .subscribe((result: any) => {
-          // Xử lý khi không có lỗi
-          this.message = result.msg;
-          this.initializeStock();
-      }, (err) => {
-          // Xử lý khi có lỗi
-          this.message = err.error.msg;
-      });
-    } else {
-      console.error('Stock form is in an invalid state');
-    }
+ createStock(stockForm: any): void {
+  if(stockForm.valid) {
+    this.httpServerService.postStock(this.stock)
+    .subscribe(() => {
+      // Reset form after successful creation
+      this.initializeStock();
+    });
+     // Navigate to stock list page to update data
   }
+ else {
+    console.error('Stock form is in an invalid state');
+ }
+}
 }

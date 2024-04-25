@@ -12,9 +12,12 @@
         [class.negative]="stock.price <= stock.previousPrice">
         ${{stock.previousPrice}}
     </div>
-    <button (click)="onToggleFavorite($event)"
-            *ngIf="stock.favorite">Add to Favorite</button>
-    <button (click)="onToggleFavorite($event)"
-            *ngIf="!stock.favorite">Remove from Favorite</button>
     
+    <button (click)="onToggleFavorite($event)"
+            *ngIf="!stock.favorite">Add to Favorite</button>
+    <button (click)="onToggleFavorite($event)"
+            *ngIf="stock.favorite">Remove from Favorite</button>
+    <br><button (click)="deleteStock()">Delete</button>
+    <button (click)="updateStock()">Update</button>
+    <button (click)="detailStock()">Detail</button>
 </div>

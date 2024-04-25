@@ -14,12 +14,34 @@ export class StockItemComponent {
 
   @Input() public stock!: Stock;
 
-  constructor(private httpServerService: HttpServerService) { }
+  constructor(private stockService: StockService, private httpServerService: HttpServerService) { }
   
-  onToggleFavorite(event : any): void {
-    this.stock.favorite = !this.stock.favorite;
-    this.httpServerService.toggleFavorite(this.stock.code)
-      .subscribe(() => console.log(`Cập nhật trạng thái yêu thích cho ${this.stock.name}`));
+  onToggleFavorite(event: any){
+    this.stockService.toggleFavorite(this.stock)
+      .subscribe((stock) => this.stock.favorite = !this.stock.favorite);
   }
 
+  deleteStock() {
+    this.httpServerService.deleteStock(this.stock.id)
+      .subscribe(() => {
+        // Xóa cổ phiếu thành công, thực hiện các thao tác cập nhật giao diện (nếu cần)
+      }, (error) => {
+        console.error('Lỗi khi xóa cổ phiếu:', error);
+        // Xử lý lỗi nếu có
+      });
+  }
+
+  updateStock() {
+    this.httpServerService.updateStock(this.stock.id, this.stock)
+      .subscribe(() => {
+        // Cập nhật thông tin cổ phiếu thành công, thực hiện các thao tác cập nhật giao diện (nếu cần)
+      }, (error) => {
+        console.error('Lỗi khi cập nhật cổ phiếu:', error);
+        // Xử lý lỗi nếu có
+      });
+  }
+
+  detailStock() {
+    // Điều hướng đến trang chi tiết cổ phiếu hoặc thực hiện các thao tác khác liên quan đến xem chi tiết cổ phiếu
+  }
 }

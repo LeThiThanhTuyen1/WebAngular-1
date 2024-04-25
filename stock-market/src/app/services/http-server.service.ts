@@ -29,7 +29,7 @@ export class HttpServerService {
     return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 
-  public updateStock(stockId: string, body: any): Observable<any>{
+  public updateStock(stockId: number, body: any): Observable<any>{
     const url=`${this.REST_API_SERVICE}/stocks/${stockId}`;
     return this.httpClient.put<any>(url, body, this.httpOptions);
   }
@@ -39,8 +39,4 @@ export class HttpServerService {
     return this.httpClient.delete<any>(url, this.httpOptions);
   }
 
-  public toggleFavorite(stockId: string): Observable<any>{
-    const url = `${this.REST_API_SERVICE}/stocks/${stockId}`;
-    return this.httpClient.patch<any>(url, { favorite: true }, this.httpOptions);
-  }  
 }

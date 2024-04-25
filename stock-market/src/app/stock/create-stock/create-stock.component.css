@@ -27,7 +27,12 @@
 .stock-code input.ng-dirty {
     background-color: pink;
 }
-
+.stock-id input.ng-pristine {
+    background-color: green;
+}
+.stock-id input.ng-dirty {
+    background-color: pink;
+}
 .stock-price input.ng-untouched {
     background-color: green;
 }
