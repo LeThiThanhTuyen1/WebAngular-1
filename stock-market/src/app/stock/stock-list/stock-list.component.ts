@@ -23,7 +23,7 @@ export class StockListComponent implements OnInit{
 
   getStocks(): void {
     this.httpServerService.getStocks()
-      .subscribe(stocks => this.stocks = this.stocks);
+      .subscribe(stocks => this.stocks = stocks);
   }
   // public stocks$: Observable<Stock[]> = of([]);
 
