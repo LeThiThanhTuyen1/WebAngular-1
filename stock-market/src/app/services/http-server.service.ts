@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Stock } from '../model/stock';
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,11 @@ export class HttpServerService {
 
   constructor(private httpClient: HttpClient) { }
   
+  toggleFavorite(stock: Stock): Observable<Stock> {
+    const url = `${this.REST_API_SERVICE}/stocks/${stock.id}`;
+    const updatedStock = { ...stock, favorite: !stock.favorite };
+    return this.httpClient.patch<Stock>(url, updatedStock, this.httpOptions);
+  }
   
   public getStocks(): Observable<any>{
     const url=`${this.REST_API_SERVICE}/stocks`;
@@ -34,9 +41,19 @@ export class HttpServerService {
     return this.httpClient.put<any>(url, body, this.httpOptions);
   }
 
+  public updateStock1(body: any): Observable<any> {
+    const url=`${this.REST_API_SERVICE}/stocks`;
+    return this.httpClient.put<any>(body, this.httpOptions);
+  }
+
   public deleteStock(stockId: number): Observable<any>{
     const url=`${this.REST_API_SERVICE}/stocks/${stockId}`;
     return this.httpClient.delete<any>(url, this.httpOptions);
+  }
+
+  deleteStock1(id: number): Observable<any> {
+    const url=`${this.REST_API_SERVICE}/stocks/${id}`;
+    return this.httpClient.delete<any>(url);
   }
 
 }

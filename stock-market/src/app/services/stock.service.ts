@@ -11,7 +11,7 @@ import test from 'node:test';
 export class StockService {
 
   constructor(private http: HttpClient) {}
-
+  //lấy danh sách cổ phiếu
   getStocks() : Observable<Stock[]> {
     return this.http.get<Stock[]>('/api/stock', {
       headers: new HttpHeaders()
@@ -47,15 +47,15 @@ export class StockService {
       responseType: 'blob'
     });
   }
-
+  //tạo cổ phiếu mới trên máy chủ
   createStock(stock: Stock) : Observable<any> {
     return this.http.post('/api/stock', stock);
   }
 
   
-
+//thay đổi trạng tháu yêu thích mới trong yêu cầu
   toggleFavorite(stock: Stock): Observable<Stock> {
-    return this.http.patch<Stock>('/api/stock' + stock,
+    return this.http.patch<Stock>('/api/stock/' + stock.code,
       {
         favorite: !stock.favorite
       });

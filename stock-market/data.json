@@ -31,8 +31,17 @@
       "id": 4,
       "name": "My New Stock",
       "code": "MNS",
-      "price": 0,
-      "previousPrice": 0,
+      "price": 99,
+      "previousPrice": 99,
+      "exchange": "OTHER",
+      "favorite": false
+    },
+    {
+      "id": 5,
+      "name": "My New Stock 1",
+      "code": "MNSS",
+      "price": 22,
+      "previousPrice": 22,
       "exchange": "NASDAQ",
       "favorite": false
     }

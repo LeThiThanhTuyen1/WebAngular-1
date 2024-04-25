@@ -23,13 +23,37 @@ export class StockListComponent implements OnInit{
 
   getStocks(): void {
     this.httpServerService.getStocks()
-      .subscribe(stocks => this.stocks = stocks);
+      //.subscribe(stocks => this.stocks = stocks);
+      .subscribe((data) => {
+        this.stocks = data;
+      });
   }
 
   createStock(stock: Stock): void {
     this.httpServerService.postStock(stock)
       .subscribe(newStock => {
         this.stocks.push(newStock);
+      });
+  }
+
+  deleteStock(stockId: number) {
+    this.httpServerService.deleteStock(stockId)
+      .subscribe(() => {
+        this.getStocks
+      });
+  }
+
+  deleteStock1(stockId: number) {
+    this.httpServerService.deleteStock1(stockId)
+      .subscribe(() => {
+        this.getStocks();
+      });
+  }
+
+  updateStock(stock: any) {
+    this.httpServerService.updateStock1(stock)
+      .subscribe(() => {
+        this.getStocks
       });
   }
   // public stocks$: Observable<Stock[]> = of([]);

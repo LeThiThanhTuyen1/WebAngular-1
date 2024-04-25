@@ -39,11 +39,12 @@ export class CreateStockComponent {
   this.stock.price = price;
   this.stock.previousPrice = price;
  }
+ 
  createStock(stockForm: any): void {
   if(stockForm.valid) {
     this.httpServerService.postStock(this.stock)
-    .subscribe(() => {
-      // Reset form after successful creation
+    .subscribe((result: any) => {
+      this.message = result.msg;
       this.initializeStock();
     });
      // Navigate to stock list page to update data
@@ -51,5 +52,12 @@ export class CreateStockComponent {
  else {
     console.error('Stock form is in an invalid state');
  }
+}
+
+updateStock(stock: any) {
+  this.httpServerService.updateStock1(stock)
+    .subscribe(() => {
+      //
+    });
 }
 }
