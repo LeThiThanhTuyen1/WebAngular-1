@@ -15,7 +15,7 @@
       "code": "SSC",
       "price": "10",
       "previousPrice": "20",
-      "exchange": "NYSE",
+      "exchange": "NSE",
       "favorite": false
     },
     {
@@ -34,7 +34,7 @@
       "price": 231,
       "previousPrice": 231,
       "exchange": "OTHER",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "5",

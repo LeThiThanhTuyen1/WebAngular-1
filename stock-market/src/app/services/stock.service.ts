@@ -10,6 +10,8 @@ import test from 'node:test';
 })
 export class StockService {
 
+  private apiUrl = '/api/stocks';
+
   constructor(private http: HttpClient) {}
   //lấy danh sách cổ phiếu
   getStocks() : Observable<Stock[]> {
