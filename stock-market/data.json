@@ -1,7 +1,7 @@
 {
   "stocks": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Test Stock Company",
       "code": "TSC",
       "price": "85",
@@ -10,16 +10,16 @@
       "favorite": false
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Second Stock Company",
       "code": "SSC",
       "price": "10",
       "previousPrice": "20",
-      "exchange": "NSE",
+      "exchange": "NYSE",
       "favorite": false
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Last Stock Company",
       "code": "LSC",
       "price": "876",
@@ -28,20 +28,20 @@
       "favorite": false
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "My New Stock",
       "code": "MNS",
-      "price": 99,
-      "previousPrice": 99,
+      "price": 231,
+      "previousPrice": 231,
       "exchange": "OTHER",
       "favorite": false
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "My New Stock 1",
-      "code": "MNSS",
-      "price": 22,
-      "previousPrice": 22,
+      "code": "MNS1",
+      "price": 2313,
+      "previousPrice": 2313,
       "exchange": "NASDAQ",
       "favorite": false
     }

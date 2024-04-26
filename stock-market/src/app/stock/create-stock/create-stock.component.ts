@@ -18,9 +18,8 @@ export class CreateStockComponent {
   public message: string = '';
   public exchanges  = ['NYSE', 'NASDAQ', 'OTHER'];
 
-  //constructor(private stockService: StockService) {
-    constructor(private httpServerService: HttpServerService, private router: Router) {
-    this.initializeStock();
+  constructor(private httpServerService: HttpServerService, private router: Router) {
+      this.initializeStock();
   }
 
   initializeStock() {
@@ -46,8 +45,8 @@ export class CreateStockComponent {
     .subscribe((result: any) => {
       this.message = result.msg;
       this.initializeStock();
+      window.location.reload();
     });
-     // Navigate to stock list page to update data
   }
  else {
     console.error('Stock form is in an invalid state');
@@ -55,9 +54,10 @@ export class CreateStockComponent {
 }
 
 updateStock(stock: any) {
-  this.httpServerService.updateStock1(stock)
-    .subscribe(() => {
+  this.httpServerService.updateStock(this.stock.id, stock)
+    .subscribe((updatedStock: Stock) => {
       //
+      this.stock = updatedStock;
     });
 }
 }

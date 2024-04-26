@@ -9,7 +9,7 @@ import { catchError } from 'rxjs';
 })
 export class HttpServerService {
 
-  private REST_API_SERVICE='http://localhost:3000';
+  private REST_API_SERVER='http://localhost:3000';
   private httpOptions={
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -19,41 +19,35 @@ export class HttpServerService {
   constructor(private httpClient: HttpClient) { }
   
   toggleFavorite(stock: Stock): Observable<Stock> {
-    const url = `${this.REST_API_SERVICE}/stocks/${stock.id}`;
+    const url = `${this.REST_API_SERVER}/stocks/${stock.id}`;
     const updatedStock = { ...stock, favorite: !stock.favorite };
     return this.httpClient.patch<Stock>(url, updatedStock, this.httpOptions);
   }
   
   public getStocks(): Observable<any>{
-    const url=`${this.REST_API_SERVICE}/stocks`;
+    const url=`${this.REST_API_SERVER}/stocks`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
-
+  
   public postStock(body: any): Observable<any>{
-    const url=`${this.REST_API_SERVICE}/stocks`;
+    const url=`${this.REST_API_SERVER}/stocks`;
     console.log('postStock=', url);
     console.log('postStock: body', body);
     return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 
   public updateStock(stockId: number, body: any): Observable<any>{
-    const url=`${this.REST_API_SERVICE}/stocks/${stockId}`;
+    const url=`${this.REST_API_SERVER}/stocks/${stockId}`;
     return this.httpClient.put<any>(url, body, this.httpOptions);
   }
 
-  public updateStock1(body: any): Observable<any> {
-    const url=`${this.REST_API_SERVICE}/stocks`;
-    return this.httpClient.put<any>(body, this.httpOptions);
-  }
-
-  public deleteStock(stockId: number): Observable<any>{
-    const url=`${this.REST_API_SERVICE}/stocks/${stockId}`;
+  public deleteStock(stockId: number): Observable<any> {
+    const url=`${this.REST_API_SERVER}/stocks/${stockId}`;
     return this.httpClient.delete<any>(url, this.httpOptions);
   }
-
-  deleteStock1(id: number): Observable<any> {
-    const url=`${this.REST_API_SERVICE}/stocks/${id}`;
-    return this.httpClient.delete<any>(url);
+  
+  public getStockDetails(stockId: number): Observable<any> {
+    const url=`${this.REST_API_SERVER}/stocks/${stockId}`;
+    return this.httpClient.get<any>(url, this.httpOptions);
   }
-
 }

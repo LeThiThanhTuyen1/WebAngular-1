@@ -15,6 +15,7 @@ export class StockItemComponent {
   @Input() public stock!: Stock;
   @Output() delete = new EventEmitter<number>();
   @Output() update = new EventEmitter<any>();
+  public isUpdateFormVisible: boolean = false;
 
   constructor(private stockService: StockService, private httpServerService: HttpServerService) { }
   
@@ -23,25 +24,35 @@ export class StockItemComponent {
       .subscribe((stock) => this.stock.favorite = !this.stock.favorite);
   }
 
-  deleteStock() {
-    this.delete.emit(this.stock.id);
-    // this.httpServerService.deleteStock(this.stock.id)
-    //   .subscribe((data) => {
-    //     // Xóa cổ phiếu thành công, thực hiện các thao tác cập nhật giao diện (nếu cần)
-    //   }, (error) => {
-    //     console.error('Unable to delete the stock:', error);
-    //     // Xử lý lỗi nếu có
-    //   });
+  deleteStock(stock: Stock) {
+    this.httpServerService.deleteStock(stock.id)
+      .subscribe((result) => {location.reload()});
+    //window.location.reload();
+  }
+
+  toggleUpdateForm() {
+    this.isUpdateFormVisible = !this.isUpdateFormVisible;
   }
 
   updateStock() {
-    this.update.emit(this.stock);
-    // this.httpServerService.updateStock(this.stock.id, this.stock)
-    //   .subscribe(() => {
-    //     // Cập nhật thông tin cổ phiếu thành công, thực hiện các thao tác cập nhật giao diện (nếu cần)
-    //   }, (error) => {
-    //     console.error('Lỗi khi cập nhật cổ phiếu:', error);
-    //     // Xử lý lỗi nếu có
-    //   });
+    this.httpServerService.updateStock(this.stock.id, this.stock)
+      .subscribe(() => {
+
+      }, (err) => {
+        console.error('Error');
+      });
+  }
+
+  onDetails(stock: Stock): void {
+    this.httpServerService.getStockDetails(stock.id)
+    .subscribe((response) => {
+        console.log('Stock details:', response);
+        const stockDetail = `Stock Details: \nStock Name: ${this.stock.name}\nStock Code: ${this.stock.code}\nStock Price: $${this.stock.price}\nExchange: ${this.stock.exchange}`;
+        alert(stockDetail);
+      },
+      (error) => {
+        console.error(error);
+      }
+    )
   }
 }
