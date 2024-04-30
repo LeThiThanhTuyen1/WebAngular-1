@@ -18,12 +18,21 @@ export class HttpServerService {
 
   constructor(private httpClient: HttpClient) { }
   
-  toggleFavorite(stock: Stock): Observable<Stock> {
+  // toggleFavorite(stock: Stock): Observable<Stock> {
+  //   const url = `${this.REST_API_SERVER}/stocks/${stock.id}`;
+  //   const updatedStock = { ...stock, favorite: !stock.favorite };
+  //   return this.httpClient.patch<Stock>(url, updatedStock, this.httpOptions);
+  // }
+  
+  toggleFavorite(stock: Stock): Observable<any> {
     const url = `${this.REST_API_SERVER}/stocks/${stock.id}`;
     const updatedStock = { ...stock, favorite: !stock.favorite };
-    return this.httpClient.patch<Stock>(url, updatedStock, this.httpOptions);
+    return this.httpClient.patch<any>(url, updatedStock, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
-  
+
   public getStocks(): Observable<any>{
     const url=`${this.REST_API_SERVER}/stocks`;
     return this.httpClient.get<any>(url, this.httpOptions);
@@ -49,10 +58,10 @@ export class HttpServerService {
   //     );
   // }
 
-  // private handleError(error: any) {
-  //   console.error('An error occurred:', error);
-  //   return throwError(error);
-  // }
+   private handleError(error: any) {
+     console.error('An error occurred:', error);
+     return throwError(error);
+   }
 
   public deleteStock(stockId: number): Observable<any> {
     const url=`${this.REST_API_SERVER}/stocks/${stockId}`;
