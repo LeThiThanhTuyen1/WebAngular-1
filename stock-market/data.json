@@ -16,7 +16,7 @@
       "price": "10",
       "previousPrice": "20",
       "exchange": "NSE",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "3",

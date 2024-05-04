@@ -1,17 +1,15 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Stock } from '../../model/stock';
-import { StockListComponent } from '../stock-list/stock-list.component';
-import { Observable } from 'rxjs';
 import { StockService } from '../../services/stock.service';
+import { ActivatedRoute } from '@angular/router';
 import { HttpServerService } from '../../services/http-server.service';
-import { error } from 'console';
 
 @Component({
-  selector: 'app-stock-item',
-  templateUrl: './stock-item.component.html',
-  styleUrl: './stock-item.component.css'
+  selector: 'app-stock-details',
+  templateUrl: './stock-details.component.html',
+  styleUrl: './stock-details.component.css'
 })
-export class StockItemComponent {
+export class StockDetailsComponent implements OnInit{
 
   @Input() public stock!: Stock;
   @Output() delete = new EventEmitter<number>();
@@ -19,15 +17,17 @@ export class StockItemComponent {
   @Output() toggleFavorite: EventEmitter<any> = new EventEmitter<any>(); // Output để thông báo sự kiện
 
   public isUpdateFormVisible: boolean = false;
-
-  constructor(
-    private stockService: StockService, 
-    private httpServerService: HttpServerService) { }
+  constructor(private stockService: StockService,
+              private route: ActivatedRoute,
+              private httpServerService: HttpServerService) {}
   
-  // onToggleFavorite(event: any){
-  //   this.stockService.toggleFavorite(this.stock)
-  //     .subscribe((stock) => this.stock.favorite = !this.stock.favorite);
-  // }
+  ngOnInit(): void {
+    const stockId = Number(this.route.snapshot.paramMap.get('id'));
+    if (stockId) {
+      this.httpServerService.getStockDetail(stockId)
+        .subscribe(stock => this.stock = stock);
+    }
+  }
 
   deleteStock(stock: Stock) {
     this.httpServerService.deleteStock(stock.id)
@@ -71,16 +71,4 @@ export class StockItemComponent {
       );
   }
 
-  // onDetails(stock: Stock): void {
-  //   this.httpServerService.getStockDetails(stock.id)
-  //   .subscribe((response) => {
-  //       console.log('Stock details:', response);
-  //       const stockDetail = `Stock Details: \nStock Name: ${this.stock.name}\nStock Code: ${this.stock.code}\nStock Price: $${this.stock.price}\nExchange: ${this.stock.exchange}`;
-  //       alert(stockDetail);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   )
-  // }
 }

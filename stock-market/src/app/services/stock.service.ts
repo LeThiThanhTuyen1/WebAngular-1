@@ -26,6 +26,10 @@ export class StockService {
     });
   }
 
+  getStock(id: number) : Observable<Stock> {
+    return this.http.get<Stock>('/api/stocks/' + id);
+  }
+  
   getStocksAsResponse(): Observable<HttpResponse<Stock[]>> {
     return this.http.get<Stock[]>('api/stock', {
       observe: 'response'

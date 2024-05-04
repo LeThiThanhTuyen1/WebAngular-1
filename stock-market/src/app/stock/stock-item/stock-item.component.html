@@ -21,7 +21,7 @@
         <br><button (click)="deleteStock(stock)">Delete</button>
         <!-- <button (click)="onDetails(stock) "  >Details</button> -->
         <button (click)="toggleUpdateForm()">Update</button>
-        <!-- <button (click)="detailStock()">Detail</button> -->
+        <button [routerLink]="['/stocks/', stock.id]">Detail</button> 
     </div>
     
     <div class="update" *ngIf="isUpdateFormVisible">
@@ -48,16 +48,16 @@
             </div>
             <div class="stock-code">
                 Code: <input type="text" placeholder="Stock Code" required minlength="2"
-                name="stockCode" #stockCode="ngModel" [(ngModel)]="stock.code">          
+                name="stockCode"  disabled="true" #stockCode="ngModel" [(ngModel)]="stock.code">          
             </div>
-            <div *ngIf="stockCode.dirty && stockCode.invalid">
+            <!-- <div *ngIf="stockCode.dirty && stockCode.invalid">
                 <div *ngIf="stockCode.errors?.['required']">
                     Stock Code is Mandatory
                 </div>
                 <div *ngIf="stockCode.errors?.['minlength']">
                     Stock Code must be atleast of length 2
                 </div>
-            </div>
+            </div> -->
     
             <div class="stock-price">
                 Price: <input type="number" placeholder="Stock Price" required

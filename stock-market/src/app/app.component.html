@@ -3,8 +3,31 @@
 <!-- <app-login></app-login> -->
 <!-- <app-stock-tracker></app-stock-tracker> -->
 <!-- <app-creat-stock-native></app-creat-stock-native> -->
-<h1>
+<!-- <h1>
     {{title}}
-</h1>
+</h1> 
 <app-stock-list></app-stock-list>
-<app-create-stock></app-create-stock>
+<app-create-stock></app-create-stock> -->
+<div class="links">
+    <span>
+        <a routerLink="/login" routerLinkActive="active" href="/login">
+            Login
+        </a>
+    </span>
+    <span>
+        <a routerLink="/register" routerLinkActive="active" href="/register">
+            Register
+        </a>
+    </span>
+    <span>
+        <a routerLink="/stocks/list" routerLinkActive="active" href="/stocks/list">
+            Stock List
+        </a>
+    </span>
+    <span>
+        <a routerLink="/stocks/create" href="/stocks/create">
+            Create Stock
+        </a>
+    </span>
+</div>
+<router-outlet></router-outlet>

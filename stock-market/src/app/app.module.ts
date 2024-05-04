@@ -15,7 +15,10 @@ import { GetDataComponent } from './stock/get-data/get-data.component';
 import { PostDataComponent } from './stock/post-data/post-data.component';
 import { MessageService } from './services/message.service';
 import { withFetch } from '@angular/common/http';
-
+import { AppRoutesModule } from './app-routes.module';
+import { register } from 'module';
+import { RegisterComponent } from './stock/register/register.component';
+import { StockDetailsComponent } from './stock/stock-details/stock-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +29,17 @@ import { withFetch } from '@angular/common/http';
     CreatStockNativeComponent,
     StockListComponent,
     GetDataComponent,
-    PostDataComponent
+    PostDataComponent,
+    RegisterComponent,
+    StockDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutesModule
   ],
   providers: [
     provideClientHydration(),

@@ -68,7 +68,7 @@ export class HttpServerService {
     return this.httpClient.delete<any>(url, this.httpOptions);
   }
   
-  public getStockDetails(stockId: number): Observable<any> {
+  public getStockDetail(stockId: number): Observable<any> {
     const url=`${this.REST_API_SERVER}/stocks/${stockId}`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
