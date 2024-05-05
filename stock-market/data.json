@@ -44,6 +44,24 @@
       "previousPrice": 2313,
       "exchange": "NASDAQ",
       "favorite": false
+    },
+    {
+      "id": "6",
+      "name": "My New Stock 2",
+      "code": "MNS2",
+      "price": 111,
+      "previousPrice": 111,
+      "exchange": "NASDAQ",
+      "favorite": false
+    },
+    {
+      "id": 7,
+      "name": "My New Stock 3",
+      "code": "MNS3",
+      "price": 2222,
+      "previousPrice": 2222,
+      "exchange": "NASDAQ",
+      "favorite": false
     }
   ],
   "profile": {

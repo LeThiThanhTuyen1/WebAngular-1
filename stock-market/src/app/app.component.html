@@ -1,13 +1,28 @@
-<!-- <app-stock-item></app-stock-item> -->
-<!-- <app-create-stock></app-create-stock> -->
-<!-- <app-login></app-login> -->
-<!-- <app-stock-tracker></app-stock-tracker> -->
-<!-- <app-creat-stock-native></app-creat-stock-native> -->
-<!-- <h1>
-    {{title}}
-</h1> 
-<app-stock-list></app-stock-list>
-<app-create-stock></app-create-stock> -->
+<!-- <mat-toolbar class="mat-toolbar" color="primary">
+    <button mat-button class="menu-down" [matMenuTriggerFor]="menu" (click)="openMatMenuProgrammatically()" #triggerBtn><mat-icon>menu</mat-icon><span>Stock Market {{stockMarket}}</span></button>
+        <mat-menu class="mat-menu" #menu="matMenu">
+            <div *ngIf="isMenuOpen">
+                <button mat-menu-item 
+                    *ngFor="let item of menuListItems"
+                    (click)="clickMenuItem(item)"
+                    [disabled]="item.isDisabled">
+                    <mat-icon>{{item.menuIcon}}</mat-icon>
+                    <span>{{item.menuLinkText}}</span>
+                </button>
+            </div>
+        </mat-menu>
+    <button class="menu-down" mat-button><mat-icon>home</mat-icon><a routerLink="/stocks/list" routerLinkActive="active" href="/stocks/list"><span>Home</span></a></button>
+    <button class="menu-down" mat-button><mat-icon>person</mat-icon>
+        <span>
+            <a routerLink="/login" routerLinkActive="active" href="/login">
+                Login
+            </a>
+        </span>
+    </button>
+</mat-toolbar>
+<router-outlet></router-outlet>
+<div class="overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>  -->
+
 <div class="links">
     <span>
         <a routerLink="/login" routerLinkActive="active" href="/login">

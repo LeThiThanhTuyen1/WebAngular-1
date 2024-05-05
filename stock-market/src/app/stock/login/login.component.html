@@ -1,13 +1,37 @@
-<form #frm1="ngForm" class="col-6 m-auto">
-  <p><label>Username</label>
-    <input type="text" name="username" ngModel class="form-control">
-  </p>
-  <p><label>Password</label>
-    <input type="password" name="password" ngModel class="form-control">
-  </p>
+<div>
+  <form #frm1="ngForm" class="col-6 m-auto" (ngSubmit)="login()" novalidate>
+    <div *ngIf="message" class="error-message">
+      {{ message }}
+    </div>
+
+    <div class="form-control">
+      Username: <input type="text" 
+                      placeholder="Username"
+                      required
+                      name="username" 
+                      #UserName="ngModel"
+                      [(ngModel)]="username">
+      <div *ngIf="UserName.errors?.['required']"> <!-- Hiển thị thông báo nếu form đã được gửi nhưng không hợp lệ -->
+        Username is Mandatory
+      </div>
+    </div>
+  
+    <div class="form-control">
+      Password: <input type="password" 
+                      placeholder="Password" 
+                      required 
+                      name="password" 
+                      #Password="ngModel" 
+                      [(ngModel)]="password">
+      <div *ngIf="Password.errors?.['required']"> <!-- Hiển thị thông báo nếu form đã được gửi nhưng không hợp lệ -->
+        Password is Mandatory
+      </div>
+    </div>
     
-    <p><button type="submit" class="btn btn-sucess">Login</button></p>
-</form>
-<p>Value: {{frm1.value|json}}</p>
+    <p><button type="submit" class="btn btn-success">Login</button></p>
+  </form>
+</div>
+
+<!-- <p>Value: {{frm1.value|json}}</p>
 <p>Username : {{frm1.value.username}}</p>
-<p>Password : {{frm1.value.password}}</p>
+<p>Password : {{frm1.value.password}}</p> -->

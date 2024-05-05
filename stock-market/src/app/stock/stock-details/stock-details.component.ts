@@ -7,7 +7,7 @@ import { HttpServerService } from '../../services/http-server.service';
 @Component({
   selector: 'app-stock-details',
   templateUrl: './stock-details.component.html',
-  styleUrl: './stock-details.component.css'
+  styleUrls: ['./stock-details.component.css']
 })
 export class StockDetailsComponent implements OnInit{
 

@@ -1,6 +1,6 @@
 
 <div class="body">
-    <div class="stock-container">
+    <div class="stock-container" [routerLink]="['/stocks', stock.id]">
         <div class="name">{{stock.name + ' (' + stock.code + ')'}}</div>
         <div class="exchange">{{stock.exchange}}</div>
         <div class="price"
@@ -19,9 +19,8 @@
         <button (click)="onToggleFavorite($event)"
                 *ngIf="stock.favorite">Remove from Favorite</button>
         <br><button (click)="deleteStock(stock)">Delete</button>
-        <!-- <button (click)="onDetails(stock) "  >Details</button> -->
         <button (click)="toggleUpdateForm()">Update</button>
-        <button [routerLink]="['/stocks/', stock.id]">Detail</button> 
+        <!-- <button [routerLink]="['/stocks/', stock.id]">Detail</button>  -->
     </div>
     
     <div class="update" *ngIf="isUpdateFormVisible">

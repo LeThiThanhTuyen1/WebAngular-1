@@ -16,9 +16,16 @@ import { PostDataComponent } from './stock/post-data/post-data.component';
 import { MessageService } from './services/message.service';
 import { withFetch } from '@angular/common/http';
 import { AppRoutesModule } from './app-routes.module';
-import { register } from 'module';
 import { RegisterComponent } from './stock/register/register.component';
 import { StockDetailsComponent } from './stock/stock-details/stock-details.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,14 +46,23 @@ import { StockDetailsComponent } from './stock/stock-details/stock-details.compo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutesModule
+    AppRoutesModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch()),
     StockService,
-    MessageService
+    MessageService,
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { }import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+

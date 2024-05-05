@@ -23,11 +23,6 @@ export class StockItemComponent {
   constructor(
     private stockService: StockService, 
     private httpServerService: HttpServerService) { }
-  
-  // onToggleFavorite(event: any){
-  //   this.stockService.toggleFavorite(this.stock)
-  //     .subscribe((stock) => this.stock.favorite = !this.stock.favorite);
-  // }
 
   deleteStock(stock: Stock) {
     this.httpServerService.deleteStock(stock.id)
@@ -70,17 +65,4 @@ export class StockItemComponent {
         }
       );
   }
-
-  // onDetails(stock: Stock): void {
-  //   this.httpServerService.getStockDetails(stock.id)
-  //   .subscribe((response) => {
-  //       console.log('Stock details:', response);
-  //       const stockDetail = `Stock Details: \nStock Name: ${this.stock.name}\nStock Code: ${this.stock.code}\nStock Price: $${this.stock.price}\nExchange: ${this.stock.exchange}`;
-  //       alert(stockDetail);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   )
-  // }
 }
