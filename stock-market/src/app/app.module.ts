@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule
   ],
   providers: [
     provideClientHydration(),

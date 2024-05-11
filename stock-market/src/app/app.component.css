@@ -1,4 +1,4 @@
-h1 {
+ h1 {
     text-align: center;
 }
 .links, .links a {
@@ -11,10 +11,10 @@ h1 {
 .create {
     color: black!important;
 }
-/* a {
+a {
     text-decoration: none;
-    color: white;
-} */
+}
+ /*
 .menu-down:hover {
     background-color: blue;
 }
@@ -30,4 +30,28 @@ h1 {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 999; 
-  }
+  } 
+   */
+   
+/* .link, .link a {
+    padding: 10px;
+}
+.link, a.active {
+    background-color: grey;
+}
+.nav-height {
+    min-height: 50px!important;
+    height: 50px!important;
+}
+.content-move-right {
+    margin-left: 170px!important;
+    transition: ease  0.2s;
+}
+.content-move-left {
+    margin-left: 10px!important;
+    transition: ease  0.1s;
+}
+.active.link {
+    background: blue;
+    color: white;
+} */

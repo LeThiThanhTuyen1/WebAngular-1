@@ -3,6 +3,7 @@ import { MessageService } from './services/message.service';
 import { MatMenuListItem } from './model/matMenuListItem';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,19 @@ export class AppComponent implements OnInit {
   isMenuOpen = false;
   stockMarket: any;
   isLoggedIn: boolean = false;
+  @ViewChild(MatSidenav) 'sidenav': MatSidenav;
+  public isOpened = false;
   
+  public openLeftSide(){
+    this.isOpened = !this.isOpened;
+    this.sidenav.toggle();
+  
+  }
+  public closeLeftSide (){
+    this.isOpened = false;
+    
+  }
+
   constructor(public messageService: MessageService,
               private router: Router
   ) {}
@@ -25,7 +38,7 @@ export class AppComponent implements OnInit {
     this.messageService.message = 'Hello Message Service!';
     this.fetchMenuListItem();
   }
-
+  
   openMatMenuProgrammatically() {
     this.triggerBtn.openMenu();
     this.isMenuOpen = true;
